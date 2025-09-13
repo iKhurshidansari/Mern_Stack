@@ -1,0 +1,21 @@
+h1 {
+    background-color: rgba(221, 21, 204, 1);
+    font-size: 50px;
+}
+h2 {
+    background-color: rgba(202, 33, 53, 1);
+    font-size: 40px;
+}
+ul {
+    background-color: rgba(21, 204, 173, 1);
+    font-size: 30px;
+}
+#exercise {
+    color: white;
+}
+#diet {
+    color: GREEN;
+}
+.diet-list {
+    color: blue;
+}
