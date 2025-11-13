@@ -1,0 +1,1 @@
+const myNewArray = [200, 400, 100, 600]
