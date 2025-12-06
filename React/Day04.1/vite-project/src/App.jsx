@@ -4,6 +4,8 @@ function App(){
   let count = 0;
   function increaseNumber(){
     count++;
+    const para = document.querySelector('p');
+    para.textContent = `Counter: ${count}`;
   }
   return(
     <>
