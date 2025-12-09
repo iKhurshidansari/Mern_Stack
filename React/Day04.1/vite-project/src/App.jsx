@@ -1,16 +1,25 @@
-
+import { useState } from "react";
 
 function App(){
-  let count = 0;
+  const [count, setCount] = useState(0);
   function increaseNumber(){
-    count++;
-    const para = document.querySelector('p');
-    para.textContent = `Counter: ${count}`;
+    
+    setCount(count+1);
   }
+
+
+
+  // let count = 0;
+  // function increaseNumber(){
+  //   count++;
+  //   const para = document.querySelector('p');
+  //   para.textContent = `Counter: ${count}`;
+  // }
+
   return(
     <>
     <p>Counter: {count}</p>
-    <button onClick={increaseNumber}>Increment</button>
+    <button onClick={increaseNumber}>Increment: {count}</button>
     </>
   )
 }
