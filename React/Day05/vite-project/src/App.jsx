@@ -1,50 +1,44 @@
-import { useState, useEffect } from "react";
+import { useEffect, useState } from "react";
+// [<img>]
 
-function App() {
-  const [users, setUsers] = useState([]);
+function App(){
+   
+   const [users,setUsers] = useState([]);
+  //  const [name,setName] = useState("");
+  const [count,setCount] = useState(30);
 
-  async function fetchGithubProfile() {
-    try {
-      const response = await fetch("https://api.github.com/users");
-      const data = await response.json();
-      setUsers(data);
-    } catch (error) {
-      console.error("Error fetching GitHub users:", error);
-    }
-  }
+   
+  useEffect(()=>{
+     
+    async function GithubProfile() {
+       
+    const response = await fetch(`https://api.github.com/users?per_page=${count}`);
+    const data = await response.json();
+    setUsers(data);
+    console.log("Hello");
+   }
 
-  useEffect(() => {
-    fetchGithubProfile();
-  }, []); // Empty dependency array means this runs once on mount
+   GithubProfile();
+
+  },[count]) 
+  
+  // function handleChange(e){
+  //   setName(e.target.value.toUpperCase());
+  // }
 
   return (
     <>
-      <h1>Github Users</h1>
-      <div
-        style={{
-          display: "flex",
-          justifyContent: "center",
-          alignItems: "center",
-          flexWrap: "wrap",
-          gap: "20px",
-          padding: "20px"
-        }}
-      >
-        {users.map((user) => (
-          <div key={user.id} style={{ textAlign: "center" }}>
-            <img
-              src={user.avatar_url}
-              alt={user.login}
-              height={"100px"}
-              width={"100px"}
-              style={{ borderRadius: "50%" }}
-            />
-            <p>{user.login}</p>
-          </div>
-        ))}
-      </div>
+    <h1>Github User</h1>
+    <input type="number" value={count} onChange={(e)=>setCount(e.target.value)}></input>
+    <div style={{display:"flex", justifyContent:"center", alignItems:"center", flexWrap:"wrap" , gap:"10px"}}>
+      {
+        users.map(user=>(
+          <img src={user.avatar_url} height={"100px"} width={"100px"} key={user.login}/>
+        ))
+      }
+    </div>
     </>
-  );
+  )
 }
 
 export default App;
