@@ -43,7 +43,7 @@ console.log(marks.length);
 // console.log(arr1);
 
 
-const = arr =[20, 49, 76, 80];
+const arr =[20, 49, 76, 80];
 arr = [10, 30, 50];
 
 const a = 10;
