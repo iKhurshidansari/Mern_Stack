@@ -1,5 +1,6 @@
-import { useMemo, useState } from 'react'
+import { useCallback, useMemo, useState } from 'react'
 import Sum from './sum'
+import Post from './post';
 
 
 
@@ -24,6 +25,11 @@ function App() {
   //   return total;
   // }
 
+  const handleClick = useCallback(()=>{
+    console.log("Handle Click", count);
+    
+  },[count]);
+
   const prime = useMemo(()=>{
     let total = 0;
     if(number>1)
@@ -41,6 +47,10 @@ function App() {
     return total;
   },[number])
 
+  const obj = useMemo(()=>{
+    return {name: "Rohit", age:20};
+  },[])
+
   console.log("app render");
   
 
@@ -51,7 +61,9 @@ function App() {
      <h2>Your Current Number:{number} </h2>
      <button onClick={()=> setNumber(number+100)}>Increment Number</button>
       <h3>Total Prime Number: {prime}</h3>
+      <button onClick={handleClick}>Click</button>
      <Sum number = {number}></Sum>
+     <Post value={obj}> </Post>
     </>
   )
 }
